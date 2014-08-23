@@ -14,7 +14,9 @@ public class Cell {
 	}
 
 	public boolean adj(Cell cell) {
-		if (cell.y_loc == y_loc)
+		if ((cell.y_loc == y_loc) || (cell.x_loc == x_loc))
+			return true;
+		else if ((cell.x_loc - x_loc == 1) || (cell.x_loc - x_loc == -1))
 			return true;
 		else
 			return false;

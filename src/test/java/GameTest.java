@@ -14,6 +14,8 @@ public class GameTest {
 	private static final Cell CELL_01 = new Cell(0,1);
 	private static final Cell CELL_00 = new Cell(0,0);
 	private static final Cell CELL_20 = new Cell(2,0);
+	private static final Cell CELL_21 = new Cell(2,1);
+	private static final Cell CELL_22 = new Cell(2,2);
 	private List<Cell> cellList;
 	private World world;
 
@@ -30,7 +32,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void cellShouldTellTrueIfAnotherCellAdjacent() {
+	public void cellShouldTellTrueIfAnotherCellAdjacentNorthToSouth() {
 		Cell cell00 =  CELL_00;
 		Cell cell10 =  CELL_10;
 		
@@ -38,11 +40,11 @@ public class GameTest {
 	}
 	
 	@Test
-	public void cellShouldTellFalseIfAnotherCellNotAdjacent() {
-		Cell cell00 =  CELL_01;
-		Cell cell20 =  CELL_10;
+	public void cellShouldTellFalseIfAnotherCellNotAdjacentEastToWest() {
+		Cell cell01 =  CELL_01;
+		Cell cell22 =  CELL_22;
 		
-		assertEquals(false, cell00.adj(cell20));
+		assertEquals(false, cell01.adj(cell22));
 	}
 	
 	@Test

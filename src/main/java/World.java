@@ -17,6 +17,10 @@ public class World {
 		if (cells.size() == 1) {
 			cells.remove(0);
 		}
+		else if (cells.size() == 3) {
+			Cell newCell = new Cell(1,1);
+			cells.add(newCell);
+		}
 	}
 
 }

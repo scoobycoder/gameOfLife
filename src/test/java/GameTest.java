@@ -8,9 +8,9 @@ import org.junit.Test;
 
 
 public class GameTest {
-
-	private List<Cell> cellList;
 	
+	private List<Cell> cellList;
+
 	@Before
 	public void setup() {
 		cellList = new ArrayList<Cell>();
@@ -44,6 +44,22 @@ public class GameTest {
 		world.generate();
 		
 		assertEquals(0, world.cellCount());
+	}
+	
+	@Test
+	public void worldShouldIncreasePopulationIfExactlyThreeCells() {
+		Cell cell = new Cell(0,0);
+		Cell cell2 = new Cell(0,1);
+		Cell cell3 = new Cell(1,0);
+
+		cellList.add(cell);
+		cellList.add(cell2);
+		cellList.add(cell3);
+		
+		World world = new World(cellList);
+		world.generate();
+		
+		assertEquals(4, world.cellCount());
 	}
 	
 }

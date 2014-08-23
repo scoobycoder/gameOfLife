@@ -9,7 +9,11 @@ import org.junit.Test;
 
 public class GameTest {
 	
+	private static final Cell CELL_10 = new Cell(1,0);
+	private static final Cell CELL_01 = new Cell(0,1);
+	private static final Cell CELL_00 = new Cell(0,0);
 	private List<Cell> cellList;
+	private World world;
 
 	@Before
 	public void setup() {
@@ -18,48 +22,60 @@ public class GameTest {
 	
 	@Test
 	public void cellShouldTakeBirthLocation() {
-		Cell cell =  new Cell(0,0);
+		Cell cell =  CELL_00;
 		
 		assertEquals(true, cell.alive());
 	}
 	
 	@Test
 	public void worldShouldReturnTwoCellsIfTwoCellsLive() {
-		Cell cell = new Cell(0,0);
-		Cell cell2 = new Cell(1,0);
-		cellList.add(cell);
-		cellList.add(cell2);
+		Cell cell = CELL_00;
+		Cell cell2 = CELL_10;
+		addCell(cell);
+		addCell(cell2);
 
-		World world = new World(cellList);
+		createWorld();
 		
 		assertEquals(2, world.cellCount());
 	}
 
 	@Test
 	public void worldShouldAllowForDeathOfOnlyCell() {
-		Cell cell = new Cell(0,0);
-		cellList.add(cell);
+		Cell cell = CELL_00;
+		addCell(cell);
 		
-		World world = new World(cellList);
-		world.generate();
+		createWorld();
+		generate();
 		
 		assertEquals(0, world.cellCount());
 	}
 	
 	@Test
 	public void worldShouldIncreasePopulationIfExactlyThreeCells() {
-		Cell cell = new Cell(0,0);
-		Cell cell2 = new Cell(0,1);
-		Cell cell3 = new Cell(1,0);
+		Cell cell00 = CELL_00;
+		Cell cell01 = CELL_01;
+		Cell cell10 = CELL_10;
 
-		cellList.add(cell);
-		cellList.add(cell2);
-		cellList.add(cell3);
+		addCell(cell00);
+		addCell(cell01);
+		addCell(cell10);
 		
-		World world = new World(cellList);
-		world.generate();
+		createWorld();
+		generate();
 		
 		assertEquals(4, world.cellCount());
+	}
+
+	private void addCell(Cell cell) {
+		cellList.add(cell);
+	}
+
+	private void generate() {
+		world.generate();
+	}
+
+	private void createWorld() {
+		world = new World(cellList);
 	}
 	
 }

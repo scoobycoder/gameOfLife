@@ -26,9 +26,7 @@ public class GameTest {
 	
 	@Test
 	public void cellShouldTakeBirthLocation() {
-		Cell cell =  CELL_00;
-		
-		assertEquals(true, cell.alive());
+		assertEquals(true, CELL_00.alive());
 	}
 	
 	@Test
@@ -43,10 +41,8 @@ public class GameTest {
 	
 	@Test
 	public void worldShouldReturnTwoCellsIfTwoCellsLive() {
-		Cell cell = CELL_00;
-		Cell cell2 = CELL_10;
-		addCell(cell);
-		addCell(cell2);
+		addCell(CELL_00);
+		addCell(CELL_10);
 
 		createWorld();
 		
@@ -55,8 +51,7 @@ public class GameTest {
 
 	@Test
 	public void worldShouldAllowForDeathOfOnlyCell() {
-		Cell cell = CELL_00;
-		addCell(cell);
+		addCell(CELL_00);
 		
 		createWorld();
 		generate();
@@ -66,13 +61,9 @@ public class GameTest {
 	
 	@Test
 	public void worldShouldIncreasePopulationIfExactlyThreeCells() {
-		Cell cell00 = CELL_00;
-		Cell cell01 = CELL_01;
-		Cell cell10 = CELL_10;
-
-		addCell(cell00);
-		addCell(cell01);
-		addCell(cell10);
+		addCell(CELL_00);
+		addCell(CELL_01);
+		addCell(CELL_10);
 		
 		createWorld();
 		generate();
@@ -82,16 +73,13 @@ public class GameTest {
 	
 	@Test @Ignore
 	public void worldShouldAllowTwoCellsToDieIfNotAdjacent() {
-		Cell cell00 = CELL_00;
-		Cell cell20 = CELL_20;
-
-		addCell(cell00);
-		addCell(cell20);
+		addCell(CELL_00);
+		addCell(CELL_20);
 		
 		createWorld();
 		generate();
 		
-		assertEquals(0, world.cellCount());
+		validateLiveCellCount(world.cellCount(), 0);
 	}
 	
 

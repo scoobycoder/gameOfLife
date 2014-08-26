@@ -50,7 +50,11 @@ public class GameTest {
 
 		createWorld();
 		
-		assertEquals(2, world.cellCount());
+		validateLiveCellCount(world.cellCount(), 2);
+	}
+
+	private void validateLiveCellCount(int cellCount, int liveCells) {
+		assertEquals(liveCells, cellCount);
 	}
 
 	@Test
@@ -61,7 +65,7 @@ public class GameTest {
 		createWorld();
 		generate();
 		
-		assertEquals(0, world.cellCount());
+		validateLiveCellCount(world.cellCount(), 0);
 	}
 	
 	@Test

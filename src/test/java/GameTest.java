@@ -53,10 +53,6 @@ public class GameTest {
 		validateLiveCellCount(world.cellCount(), 2);
 	}
 
-	private void validateLiveCellCount(int cellCount, int liveCells) {
-		assertEquals(liveCells, cellCount);
-	}
-
 	@Test
 	public void worldShouldAllowForDeathOfOnlyCell() {
 		Cell cell = CELL_00;
@@ -81,7 +77,7 @@ public class GameTest {
 		createWorld();
 		generate();
 		
-		assertEquals(4, world.cellCount());
+		validateLiveCellCount(world.cellCount(), 4);
 	}
 	
 	@Test @Ignore
@@ -117,6 +113,10 @@ public class GameTest {
 
 	private void cellsNotAdjacent(Cell cell01, Cell cell22) {
 		assertEquals(false, cell01.adj(cell22));
+	}	
+
+	private void validateLiveCellCount(int cellCount, int liveCells) {
+		assertEquals(liveCells, cellCount);
 	}	
 	
 }

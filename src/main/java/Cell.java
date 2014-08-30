@@ -10,10 +10,6 @@ public class Cell {
 		y_loc = y;
 	}
 
-	public boolean alive() {
-		return true;
-	}
-
 	public boolean adj(Cell cell) {
 		cell_loc = cell;
 		

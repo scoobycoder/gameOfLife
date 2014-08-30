@@ -25,11 +25,6 @@ public class GameTest {
 	}
 	
 	@Test
-	public void cellShouldTakeBirthLocation() {
-		assertEquals(true, CELL_00.alive());
-	}
-	
-	@Test
 	public void cellShouldTellTrueIfAnotherCellAdjacentNorthToSouth() {
 		cellsAdjacent(CELL_00, CELL_10);
 	}

@@ -14,22 +14,35 @@ public class World {
 	}
 
 	public void generate() {
+		if (shouldGiveBirth())
+			cellBirth();
+		else if (shouldCheckRemainingCells())
+			removeNonAdjacentCells();
+		
 		lastCellDies();
-		if (cells.size() == 3) {
-			Cell newCell = new Cell(1,1);
-			cells.add(newCell);
-		}
-		else if (cells.size() > 1) {
-			int removedCount = 0;
-			for (int i = 0; i <= cells.size() - removedCount; i++) {
-				if (cells.get(i).adj(cells.get(i + 1)) == false) {
-					cells.remove(i);
-					removedCount++;
-				}
+	}
+
+	private boolean shouldGiveBirth() {
+		return cells.size() == 3;
+	}
+
+	private boolean shouldCheckRemainingCells() {
+		return cells.size() > 1;
+	}
+
+	private void cellBirth() {
+		Cell newCell = new Cell(1,1);
+		cells.add(newCell);
+	}
+
+	private void removeNonAdjacentCells() {
+		int removedCount = 0;
+		for (int i = 0; i <= cells.size() - removedCount; i++) {
+			if (cells.get(i).adj(cells.get(i + 1)) == false) {
+				cells.remove(i);
+				removedCount++;
 			}
 		}
-		lastCellDies();
-			
 	}
 
 	private void lastCellDies() {

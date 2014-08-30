@@ -14,14 +14,12 @@ public class World {
 	}
 
 	public void generate() {
-		if (cells.size() == 1) {
-			cells.remove(0);
-		}
-		else if (cells.size() == 3) {
+		lastCellDies();
+		if (cells.size() == 3) {
 			Cell newCell = new Cell(1,1);
 			cells.add(newCell);
 		}
-		else {
+		else if (cells.size() > 1) {
 			int removedCount = 0;
 			for (int i = 0; i <= cells.size() - removedCount; i++) {
 				if (cells.get(i).adj(cells.get(i + 1)) == false) {
@@ -30,7 +28,14 @@ public class World {
 				}
 			}
 		}
+		lastCellDies();
 			
+	}
+
+	private void lastCellDies() {
+		if (cells.size() == 1) {
+			cells.remove(0);
+		}
 	}
 
 }

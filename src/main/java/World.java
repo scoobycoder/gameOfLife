@@ -37,12 +37,21 @@ public class World {
 
 	private void removeNonAdjacentCells() {
 		int removedCount = 0;
-		for (int i = 0; i <= cells.size() - removedCount; i++) {
-			if (cells.get(i).adj(cells.get(i + 1)) == false) {
-				cells.remove(i);
-				removedCount++;
-			}
+		for (int cellNumber = 0; cellNumber <= cells.size() - removedCount; cellNumber++) {
+			removedCount = removeNonAdjCell(removedCount, cellNumber);
 		}
+	}
+
+	private int removeNonAdjCell(int removedCount, int cellNumber) {
+		if (cellsNotAdjacent(cellNumber)) {
+			cells.remove(cellNumber);
+			removedCount++;
+		}
+		return removedCount;
+	}
+
+	private boolean cellsNotAdjacent(int cellNumber) {
+		return cells.get(cellNumber).adj(cells.get(cellNumber + 1)) == false;
 	}
 
 	private void lastCellDies() {

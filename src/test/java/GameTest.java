@@ -46,7 +46,7 @@ public class GameTest {
 
 		createWorld();
 		
-		validateLiveCellCount(world.cellCount(), 2);
+		validateLiveCellCount(worldCellCount(), 2);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class GameTest {
 		createWorld();
 		generate();
 		
-		validateLiveCellCount(world.cellCount(), 0);
+		validateLiveCellCount(worldCellCount(), 0);
 	}
 	
 	@Test
@@ -68,10 +68,10 @@ public class GameTest {
 		createWorld();
 		generate();
 		
-		validateLiveCellCount(world.cellCount(), 4);
+		validateLiveCellCount(worldCellCount(), 4);
 	}
 	
-	@Test @Ignore
+	@Test
 	public void worldShouldAllowTwoCellsToDieIfNotAdjacent() {
 		addCell(CELL_00);
 		addCell(CELL_20);
@@ -79,7 +79,11 @@ public class GameTest {
 		createWorld();
 		generate();
 		
-		validateLiveCellCount(world.cellCount(), 0);
+		validateLiveCellCount(worldCellCount(), 0);
+	}
+
+	private int worldCellCount() {
+		return world.cellCount();
 	}
 	
 

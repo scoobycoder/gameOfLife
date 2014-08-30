@@ -17,7 +17,10 @@ public class Cell {
 	public boolean adj(Cell cell) {
 		cell_loc = cell;
 		
-		if (one_coordinate_equal())
+		if (Math.abs(cell_loc.y_loc - y_loc) > 1 || Math.abs(cell_loc.x_loc - x_loc) > 1) {
+			return false;
+		}
+		else if (one_coordinate_equal())
 			return true;
 		else if (diagnal_within_one())
 			return true;

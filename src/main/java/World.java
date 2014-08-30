@@ -21,6 +21,16 @@ public class World {
 			Cell newCell = new Cell(1,1);
 			cells.add(newCell);
 		}
+		else {
+			int removedCount = 0;
+			for (int i = 0; i <= cells.size() - removedCount; i++) {
+				if (cells.get(i).adj(cells.get(i + 1)) == false) {
+					cells.remove(i);
+					removedCount++;
+				}
+			}
+		}
+			
 	}
 
 }

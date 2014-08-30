@@ -17,7 +17,7 @@ public class Cell {
 	public boolean adj(Cell cell) {
 		cell_loc = cell;
 		
-		if (Math.abs(cell_loc.y_loc - y_loc) > 1 || Math.abs(cell_loc.x_loc - x_loc) > 1) {
+		if (cellsMoreThanOneCellApart()) {
 			return false;
 		}
 		else if (one_coordinate_equal())
@@ -26,6 +26,18 @@ public class Cell {
 			return true;
 		else
 			return false;
+	}
+
+	private boolean cellsMoreThanOneCellApart() {
+		return yAxisMoreThanOneApart() || xAxisMoreThanOneApart();
+	}
+
+	private boolean xAxisMoreThanOneApart() {
+		return Math.abs(cell_loc.x_loc - x_loc) > 1;
+	}
+
+	private boolean yAxisMoreThanOneApart() {
+		return Math.abs(cell_loc.y_loc - y_loc) > 1;
 	}
 
 	private boolean diagnal_within_one() {

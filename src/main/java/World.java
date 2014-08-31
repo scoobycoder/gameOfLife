@@ -43,15 +43,18 @@ public class World {
 	}
 
 	private int removeNonAdjCell(int removedCount, int cellNumber) {
-		if (cellsNotAdjacent(cellNumber)) {
+		if (checkIfCellsNotAdjacent(cellNumber)) {
 			cells.remove(cellNumber);
 			removedCount++;
 		}
 		return removedCount;
 	}
 
-	private boolean cellsNotAdjacent(int cellNumber) {
-		return cells.get(cellNumber).adj(cells.get(cellNumber + 1)) == false;
+	private boolean checkIfCellsNotAdjacent(int cellNumber) {
+		if (cells.size() > cellNumber + 1) {
+			return cells.get(cellNumber).adj(cells.get(cellNumber + 1)) == false;
+		}
+		return false;
 	}
 
 	private void lastCellDies() {

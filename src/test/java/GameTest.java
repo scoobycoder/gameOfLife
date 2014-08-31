@@ -39,7 +39,7 @@ public class GameTest {
 		addCell(CELL_00);
 		addCell(CELL_10);
 
-		createWorld();
+		generate();
 		
 		validateLiveCellCount(worldCellCount(), 2);
 	}
@@ -48,7 +48,6 @@ public class GameTest {
 	public void worldShouldAllowForDeathOfOnlyCell() {
 		addCell(CELL_00);
 		
-		createWorld();
 		generate();
 		
 		validateLiveCellCount(worldCellCount(), 0);
@@ -60,21 +59,24 @@ public class GameTest {
 		addCell(CELL_01);
 		addCell(CELL_10);
 		
-		createWorld();
 		generate();
 		
 		validateLiveCellCount(worldCellCount(), 4);
 	}
 	
-	@Test
+	@Test @Ignore
 	public void worldShouldAllowTwoCellsToDieIfNotAdjacent() {
 		addCell(CELL_00);
 		addCell(CELL_20);
 		
-		createWorld();
 		generate();
 		
 		validateLiveCellCount(worldCellCount(), 0);
+	}
+	
+	@Test @Ignore
+	public void worldShouldGiveBirthToCellsIfThreeWithinOneCell() {
+		
 	}
 
 	private int worldCellCount() {
@@ -87,6 +89,7 @@ public class GameTest {
 	}
 
 	private void generate() {
+		createWorld();
 		world.generate();
 	}
 

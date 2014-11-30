@@ -16,6 +16,10 @@ public class WorldTest {
 		assertEquals(true, underTest.isEmpty());
 	}
 	
+	private void checkWorldNotEmpty() {
+		assertEquals(false, underTest.isEmpty());
+	}
+	
 	@Before
 	public void setup() {
 		underTest = new World();
@@ -38,8 +42,9 @@ public class WorldTest {
 	public void addingCellLocationBeforeTick() {
 		underTest.addCellLocation(location);
 		
-		assertEquals(false, underTest.isEmpty());
+		checkWorldNotEmpty();
 	}
+
 	
 	
 }

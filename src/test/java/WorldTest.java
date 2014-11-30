@@ -53,6 +53,10 @@ public class WorldTest {
 		checkWorldEmpty();
 	}
 	
+	@Test
+	public void worldShouldTellIfNeighborsOfLocationWhenNoNeighbors() {
+		assertEquals(0, underTest.neighborCount(location));
+	}
 	
 	
 }

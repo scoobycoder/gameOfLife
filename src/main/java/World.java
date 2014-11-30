@@ -23,4 +23,8 @@ public class World {
 		locations.add(location);
 	}
 
+	public int neighborCount(Location location) {
+		return 0;
+	}
+
 }

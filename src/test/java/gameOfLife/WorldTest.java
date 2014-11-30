@@ -1,3 +1,5 @@
+package gameOfLife;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -20,8 +22,8 @@ public class WorldTest {
 		assertEquals(false, underTest.isEmpty());
 	}
 
-	private void checkNoNeighborsForLocation(Location location) {
-		assertEquals(0, underTest.neighborCount(location));
+	private void checkNeighborsForLocation(Location location, int expectedNeighbors) {
+		assertEquals(expectedNeighbors, underTest.neighborCount(location));
 	}
 	
 	@Before
@@ -59,9 +61,7 @@ public class WorldTest {
 	
 	@Test
 	public void worldShouldTellIfNeighborsOfLocationWhenNoNeighbors() {
-		checkNoNeighborsForLocation(location);
+		checkNeighborsForLocation(location, 0);
 	}
-
-	
 	
 }

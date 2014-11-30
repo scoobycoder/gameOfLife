@@ -15,6 +15,8 @@ public class World {
 	}
 
 	public void tick() {
+		if (locations.size() == 1)
+			locations.remove(0);
 	}
 
 	public void addCellLocation(Location location) {

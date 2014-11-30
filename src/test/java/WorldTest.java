@@ -45,6 +45,14 @@ public class WorldTest {
 		checkWorldNotEmpty();
 	}
 
+	@Test
+	public void oneCellWorldWillBeEmptyAfterTick() {
+		underTest.addCellLocation(location);
+		underTest.tick();
+		
+		checkWorldEmpty();
+	}
+	
 	
 	
 }

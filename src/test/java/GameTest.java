@@ -7,7 +7,6 @@ public class GameTest {
 	
 	@Test
 	public void testNewWorldIsEmpty() {
-		
 		World world = new World();
 		assertEquals(true, world.isEmpty());
 	}
@@ -18,6 +17,16 @@ public class GameTest {
 		world.tick();
 		
 		assertEquals(true, world.isEmpty());
+	}
+	
+	@Test
+	public void testAddingCellLocationBeforeTick() {
+		World world = new World();
+		
+		Location location = new Location();
+		world.addCellLocation(location);
+		
+		assertEquals(false, world.isEmpty());
 	}
 	
 }

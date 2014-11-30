@@ -19,6 +19,10 @@ public class WorldTest {
 	private void checkWorldNotEmpty() {
 		assertEquals(false, underTest.isEmpty());
 	}
+
+	private void checkNoNeighborsForLocation(Location location) {
+		assertEquals(0, underTest.neighborCount(location));
+	}
 	
 	@Before
 	public void setup() {
@@ -55,8 +59,9 @@ public class WorldTest {
 	
 	@Test
 	public void worldShouldTellIfNeighborsOfLocationWhenNoNeighbors() {
-		assertEquals(0, underTest.neighborCount(location));
+		checkNoNeighborsForLocation(location);
 	}
+
 	
 	
 }

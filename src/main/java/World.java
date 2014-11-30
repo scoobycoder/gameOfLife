@@ -5,4 +5,7 @@ public class World {
 		return true;
 	}
 
+	public void tick() {
+	}
+
 }

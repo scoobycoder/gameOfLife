@@ -12,6 +12,10 @@ public class WorldTest {
 	@Mock
 	Location location;
 
+	private void checkWorldEmpty() {
+		assertEquals(true, underTest.isEmpty());
+	}
+	
 	@Before
 	public void setup() {
 		underTest = new World();
@@ -19,14 +23,15 @@ public class WorldTest {
 	
 	@Test
 	public void newWorldIsEmpty() {
-		assertEquals(true, underTest.isEmpty());
+		checkWorldEmpty();
 	}
+
 	
 	@Test
 	public void worldStillEmptyAfterTick() {
 		underTest.tick();
 		
-		assertEquals(true, underTest.isEmpty());
+		checkWorldEmpty();
 	}
 	
 	@Test
